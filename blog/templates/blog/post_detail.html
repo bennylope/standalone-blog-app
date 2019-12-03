@@ -1,0 +1,17 @@
+{% load blog_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+    <h1>{{ post.title }}</h1>
+    {% if post.author %}
+    <p>By {{ post.author }}</p>
+    {% endif %}
+    <p>Reading time: {{ post.body|striptags|wordcount|reading_time }}</p>
+    <div>
+        {{ post.body| safe }}
+    </div>
+</body>
+</html>

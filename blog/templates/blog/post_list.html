@@ -1,0 +1,20 @@
+{% load blog_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Posts</title>
+</head>
+<body>
+{% for post in posts %}
+<article>
+    <h2>{{ post.title }}</h2>
+    <p>Reading time: {{ post.body|striptags|wordcount|reading_time }}</p>
+    <div>
+        {{ post.body|truncatechars_html:9 }}
+    </div>
+</article>
+{% empty %}
+<p>No blog posts.</p>
+{% endfor %}
+</body>
+</html>
